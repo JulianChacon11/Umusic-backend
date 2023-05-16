@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http:://www.thymeleaf.org">
+    <head>
+        <title>Datos de la persona</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Datos del cliente</h1>
+        <a th:href="@{/}">Regresar</a>
+        <br/><br/>  
+        <form th:action="@{/guardar}" method="post" th:object="${cliente}">
+            <input type="hidden" name="id" th:field="*{id}"
+            <label for="nombre" id="nombre">Nombre:</label> 
+            <input type="text" name="nombre" th:field="*{nombre}" >
+            <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Error en el nombre.</span>
+            <br/>
+            <label for="apellido" id="apellido">Apellido:</label> 
+            <input type="text" name="apellido" th:field="*{apellido}" >
+            <span th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}">Error en el apellido.</span>
+            <br/>
+            <label for="email" id="email">Email:</label> 
+            <input type="text" name="email" th:field="*{email}" >
+            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error en el email.</span>
+            <br/>
+            <label for="telefono" id="telefono">Telefono:</label> 
+            <input type="tel" name="telefono" th:field="*{telefono}" >
+            <span th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}">Error en el telefono.</span>
+            <br/>
+            <label for="nacionalidad" id="nacionalidad">Telefono:</label> 
+            <input type="text" name="nacionalidad" th:field="*{nacionalidad}" >
+            <span th:if="${#fields.hasErrors('nacionalidad')}" th:errors="*{nacionalidad}">Error en la nacionalidad.</span>
+            <br/>
+            <label for="fecha_nacimiento" id="fecha_nacimiento">Fecha nacimiento:</label> 
+            <input type="date" name="fecha_nacmiento" th:field="*{fecha_nacimiento}" >
+            <span th:if="${#fields.hasErrors('fecha_nacimiento')}" th:errors="*{fecha_nacimiento}">Error en la fecha.</span>
+            <br/>
+            <label for="genero" id="genero">Genero:</label> 
+            <input type="text" name="genero" th:field="*{genero}" >
+            <span th:if="${#fields.hasErrors('genero')}" th:errors="*{genero}">Error en el genero.</span>
+            <br/>
+            <input type="submit" name="guardar" value="guardar"/>
+        </form>
+    </body>
+</html>
