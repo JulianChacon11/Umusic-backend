@@ -19,7 +19,7 @@ import org.springframework.format.annotation.DateTimeFormat;
  */
 @Data
 @Entity
-@Table(name = "cliente")
+@Table(name = "usuarios")
 public class Cliente implements Serializable {
     private static final long serialVersionUID = 1L ;
     
@@ -48,5 +48,11 @@ public class Cliente implements Serializable {
     @NotEmpty
     private String nacionalidad;
     
+    @NotEmpty
+    private String username;
     
+    @NotEmpty
+    private String password;
+    
+    private Integer id_rol;
 }
