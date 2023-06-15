@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,25 +16,30 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import umusic.com.UMusica.entidades.Cliente;
+import umusic.com.UMusica.entidades.LoginDTO;
 import umusic.com.UMusica.servicios.IClienteService;
 /**
  *
  * @author julian chacon
  */
 @RestController
+@CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping("/api/clientes")
 public class ControladorCliente {
     
     @Autowired
     private IClienteService clienteService;
    
-   /* @GetMapping("/")
-    public String inicio(Model model) {
-        var personas = personaService.listarPersonas();
-        log.info("Ejecutando el controlador MVC.");
-        model.addAttribute("personas",personas);
-        return "index";
-    }*/
+    @PostMapping("/loginclient")
+    public int login(@RequestBody LoginDTO cliente){
+        int responseLogin = clienteService.login(cliente);
+        return responseLogin;
+    }
+    
+    @PostMapping("/login")
+    public ResponseEntity<?> loginCliente (@RequestBody LoginDTO cliente){
+        return clienteService.ingresar(cliente);
+    }
     
     @GetMapping("/main")
     public String inicio(Model model) {

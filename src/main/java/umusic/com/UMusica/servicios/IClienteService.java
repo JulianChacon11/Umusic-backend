@@ -7,13 +7,19 @@ package umusic.com.UMusica.servicios;
 
 import java.util.List;
 import java.util.Optional;
+import org.springframework.http.ResponseEntity;
 import umusic.com.UMusica.entidades.Cliente;
+import umusic.com.UMusica.entidades.LoginDTO;
 
 /**
  *
  * @author julian
  */
 public interface IClienteService {
+    
+    int login(LoginDTO clienteDTO);
+    
+    ResponseEntity<?> ingresar(LoginDTO clienteDTO);
     
     public List<Cliente> findAll();
     
