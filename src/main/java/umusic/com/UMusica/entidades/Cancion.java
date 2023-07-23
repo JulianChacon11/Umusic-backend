@@ -30,8 +30,9 @@ public class Cancion implements Serializable{
     @NotEmpty
     private String titulo;
 
-
-    private Integer id_artista;
+    @ManyToOne
+    @JoinColumn(name = "id_artista", referencedColumnName = "id") // Nombre de la columna que hace referencia al id del artista
+    private Artista artista;
 
     @NotEmpty
     private String duracion;
